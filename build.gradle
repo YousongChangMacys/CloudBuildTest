@@ -1,4 +1,9 @@
-task copyFilesToGSC(type: Copy) {
-    from fileTree(dir: 'src')
-    into '/home/yousong_chang'
+task copyFilesToGSC(type: Copy, overwrite: true) {
+   includeEmptyDirs = false
+   from fileTree("src").dir.listFiles()
+   eachFile { file ->
+       String[] parts = file.path.split('/')
+       file.path = parts.size() > 1 ? "${parts[parts.size() - 2]}/${parts[parts.size() - 1]}" : parts[0]
+   }
+   into "/home/yousong_chang"
 }
