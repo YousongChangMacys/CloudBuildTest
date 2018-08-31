@@ -1,3 +1,3 @@
 steps:
 - name: 'gcr.io/cloud-builders/git'
-  args: ['clone', 'https://github.com/YousongChangMacys/CloudBuildTest']
+  args: ['pull', 'https://github.com/YousongChangMacys/CloudBuildTest']
