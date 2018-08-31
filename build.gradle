@@ -1,0 +1,4 @@
+task copyFilesToGSC(type: Copy) {
+    from "${buildDir}/src/*"
+    into "/home/yousong_chang"
+}
