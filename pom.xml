@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <artifactId>lattice-azure-data-mover</artifactId>
+    <artifactId>Cloud Build Test 1</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.macys.daas</groupId>
     <name>Cloud Build Test</name>
@@ -27,6 +27,24 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+    <groupId>org.sonatype.plugins</groupId>
+    <artifactId>nexus-staging-maven-plugin</artifactId>
+    <version>1.6.2</version>
+    <extensions>true</extensions>
+    <configuration>
+      <serverId>ossrh</serverId>
+      <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+      <autoReleaseAfterClose>true</autoReleaseAfterClose>
+    </configuration>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-ssh</artifactId>
+        <version>2.12</version>
+      </dependency>
+    </dependencies>
+  </plugin>
         </plugins>
     </build>
     <distributionManagement>
