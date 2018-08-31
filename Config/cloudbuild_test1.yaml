@@ -1,3 +1,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/git'
   args: ['pull', 'https://github.com/YousongChangMacys/CloudBuildTest']
+- name: 'gcr.io/cloud-builders/mvn'
+  args: ['install']
