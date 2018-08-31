@@ -1,54 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <artifactId>com.macys.daas</artifactId>
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.macys.daas</groupId>
-    <name>Cloud Build Test</name>
-    <version>1.0</version>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<artifactId>com.macys.daas</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.macys.daas</groupId>
+	<name>Cloud Build Test</name>
+	<version>1.0</version>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.5.5</version>
-                <configuration>
-                    <descriptor>${project.basedir}/Config/assembly.xml</descriptor>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>assembly</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-site-plugin</artifactId>
-      <version>2.2</version>
-      <dependencies>
-        <dependency>
-          <groupId>org.apache.maven.wagon</groupId>
-          <artifactId>wagon-ssh</artifactId>
-          <version>1.0-beta-7</version>
-        </dependency>
-      </dependencies>
-     </plugin>
-        </plugins>
-    </build>
+	<build>
+		<extensions>
+        <extension>
+            <groupId>com.gkatzioura.maven.cloud</groupId>
+            <artifactId>google-storage-wagon</artifactId>
+            <version>1.0</version>
+        </extension>
+    </extensions>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.5</version>
+				<configuration>
+					<descriptor>${project.basedir}/Config/assembly.xml</descriptor>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make</id>
+						<phase>package</phase>
+						<goals>
+							<goal>assembly</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+</plugins>
+	</build>
     <distributionManagement>
-    <snapshotRepository>
-        <id>my-repo-bucket-snapshot</id>
-        <url>gs://mavenrepository/snapshot</url>
-    </snapshotRepository>
-    <repository>
-        <id>my-repo-bucket-release</id>
-        <url>gs://mavenrepository/release</url>
-    </repository>
-</distributionManagement>
+        <repository>
+            <id>gerrit-maven-repository</id>
+            <url>gs://mavenrepository</url>
+            <uniqueVersion>true</uniqueVersion>
+        </repository>
+    </distributionManagement>
 </project>
