@@ -10,12 +10,12 @@
 
 	<build>
 		<extensions>
-        <extension>
-            <groupId>com.gkatzioura.maven.cloud</groupId>
-            <artifactId>google-storage-wagon</artifactId>
-            <version>1.0</version>
-        </extension>
-    </extensions>
+			<extension>
+				<groupId>com.gkatzioura.maven.cloud</groupId>
+				<artifactId>google-storage-wagon</artifactId>
+				<version>1.0</version>
+			</extension>
+		</extensions>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -34,13 +34,13 @@
 					</execution>
 				</executions>
 			</plugin>
-</plugins>
+		</plugins>
 	</build>
-    <distributionManagement>
-        <repository>
-            <id>gerrit-maven-repository</id>
-            <url>gs://mavenrepository</url>
-            <uniqueVersion>true</uniqueVersion>
-        </repository>
-    </distributionManagement>
+	<distributionManagement>
+		<repository>
+			<id>cloud-build-test</id>
+			<url>gs://cloud_build_test</url>
+			<uniqueVersion>true</uniqueVersion>
+		</repository>
+	</distributionManagement>
 </project>
