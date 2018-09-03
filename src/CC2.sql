@@ -1,5 +1,3 @@
-
-
 set hive.msck.path.validation=ignore;
 
 USE ${env:HIVE_SCHEMA_PREFIX}raw_cust_s;
