@@ -1,1 +1,1 @@
-bq --location=US query --batch --use_legacy_sql=false 'SELECT name,number FROM `bigquery-public-data.usa_names.usa_1910_current` WHERE gender = "M" ORDER BY number DESC' LIMIT 20
+bq --location=US query --batch --use_legacy_sql=false 'SELECT name,number FROM `bigquery-public-data.usa_names.usa_1910_current` WHERE gender = "M" ORDER BY number DESC' LIMIT 10
