@@ -1,12 +1,14 @@
 steps:
-- name: gcr.io/community-builders/bq
-  args:
-  - query
-  - --use_legacy_sql=false
-  - >
-    SELECT SUM(number) AS total_bobs, year
-    FROM `bigquery-public-data.usa_names.usa_1910_current`
-    WHERE name = 'Bob'
-    GROUP BY year
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['rsync', '-d', '-c', '-r', '/workspace/src', 'gs://cloud_build_test']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--pull', '--tag=gcr.io/$PROJECT_ID/bq', '.']
+- name: 'gcr.io/$PROJECT_ID/bq'
+  args: ['version']
+
+# Invoke a command that requires auth, to check that it gets piped through
+# correctly. Requires that the Container Builder service account has at
+# least the BigQuery User IAM role.
+- name: 'gcr.io/$PROJECT_ID/bq'
+  args: ['query', '--use_legacy_sql=false', 'SELECT AVG(weight_pounds) FROM `bigquery-public-data.samples.natality`']
+images: ['gcr.io/$PROJECT_ID/bq']
