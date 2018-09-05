@@ -1,4 +1,4 @@
 task prebuildTask(type: Exec) {
     workingDir "$projectDir/src"
-    commandLine 'sh /workspace/src/BiqQuery_Test_1.sh'
+    commandLine 'sh', '-c', '/workspace/src/BiqQuery_Test_1.sh'
 }
