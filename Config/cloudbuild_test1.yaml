@@ -1,5 +1,12 @@
 steps:
-- name: 'gcr.io/cloud-builders/gradle'
-  args: ['prebuildTask']
+- name: gcr.io/community-builders/bq
+  args:
+  - query
+  - --use_legacy_sql=false
+  - >
+    SELECT SUM(number) AS total_bobs, year
+    FROM `bigquery-public-data.usa_names.usa_1910_current`
+    WHERE name = 'Bob'
+    GROUP BY year
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['rsync', '-d', '-c', '-r', '/workspace/src', 'gs://cloud_build_test']
