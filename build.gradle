@@ -1,16 +1,4 @@
-task copyFilesToGSC(type: Copy, overwrite: true) {
-   includeEmptyDirs = false
-   from fileTree("src").dir.listFiles()
-   eachFile { file ->
-       String[] parts = file.path.split('/')
-       file.path = parts.size() > 1 ? "${parts[parts.size() - 2]}/${parts[parts.size() - 1]}" : parts[0]
-   }
-   def folder = new File( '/home/yousong_chang' )
-
-	// If it doesn't exist
-	if( !folder.exists() ) {
-	  // Create all folders up-to and including B
-	  println 'No directory'
-	}
-   into "/home/yousong_chang"
+task prebuildTask(type: Exec) {
+    workingDir "$projectDir/src"
+    commandLine 'sh ./BiqQuery_Test_1.sh'
 }
