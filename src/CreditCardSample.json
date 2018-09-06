@@ -1,25 +1,25 @@
 [  
    {  
-      "CurrentKey":{  
-         "Account_Number":"5464123456789012",
-         "First_Name":"Steve",
-         "Last_Name":"Smith"
+      "currentKey":{  
+         "accountNo":"5464123456789012",
+         "firstName":"Steve",
+         "lastName":"Smith"
       },
-      "AllKeys":[  
+      "allKeys":[  
          {  
-            "Account_Number":"5464123456789013",
-            "First_Name":"Steve",
-            "Last_Name":"Smith"
+            "accountNo":"5464123456789013",
+            "firstName":"Steve",
+            "lastName":"Smith"
          },
          {  
-            "Account_Number":"5464123456789014",
-            "First_Name":"Steve",
-            "Last_Name":"Smith"
+            "accountNo":"5464123456789014",
+            "firstName":"Steve",
+            "lastName":"Smith"
          },
          {  
-            "Account_Number":"5464123456789015",
-            "First_Name":"Steve",
-            "Last_Name":"Smith"
+            "accountNo":"5464123456789015",
+            "firstName":"Steve",
+            "lastName":"Smith"
          }
       ]
    }
